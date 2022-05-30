@@ -1,0 +1,13 @@
+@import url(./font.css);
+
+
+/* .mtn-font{
+    font-family: MTNBrighterSans !important;
+    color:green;
+
+} */
+
+body *{
+    font-family: MTNBrighterSans !important;
+    color:#000;
+}

@@ -1,0 +1,120 @@
+.videosection_text{
+    font-size: 30px;
+    letter-spacing: 0.2px;
+}
+
+.register_for_free{
+    background-color: #161616 !important;
+    font-style: italic;
+    border: none !important;
+    padding: 5px 30px !important;
+    border: 1.5px solid #161616 !important;
+    font-weight: lighter;
+}
+
+.carousel-control-prev {
+    left: 0;
+    height: 170px;
+}
+
+.carousel-control-next {
+    right: 0;
+    height: 170px;
+}
+
+@media (max-width: 830px){
+    .videosection_container{
+        display: none;
+    }
+
+    .mobile_video_section {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url(../../assets/img/mobileview_banner.png);
+        background-size: cover;
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 40px;
+        margin-bottom: 100px;
+      }
+
+      .mobile_video_sectionn_text{
+          color: white;
+          padding: 0px 40px;
+          text-align: center;
+          margin-bottom: 30px;
+      }
+      
+      .mobile_video_section_button{
+          background-color: white !important;
+          font-style: italic;
+          border: none!important;
+          color: black !important;
+          font-weight: 600 !important;
+      }
+
+      .explantory_vid{
+          width: 80%;
+      }
+
+      .mobile_vid_container{
+          margin-bottom: 100px;
+      }
+
+      .carousel {
+        width: 332px;
+        background-color: black;
+        border-radius: 10px;
+        padding: 10px 0px;
+      }
+      
+      .carousel-indicators {
+        position: absolute;
+        right: 0;
+        bottom: 24px !important;
+        left: 0;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin-right: 15%;
+        margin-bottom: 1rem;   
+        margin-left: 15%;
+        list-style: none;
+        display: none !important;
+       }
+
+       .carousel-caption {
+        position: absolute;
+        right: 15%;
+        top: 1.25rem;
+        left: 15%;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        height: 50px;
+        color: #fff;
+        text-align: center;
+    }
+    
+    .carousel-control-prev {
+        left: 0;
+        height: 170px;
+    }
+    
+    .carousel-control-next {
+        right: 0;
+        height: 170px;
+    }
+
+}
+
+@media (min-width: 830px){
+    .mobile_video_section{
+        display: none;
+    }
+
+    .mobile_vid_container{
+        display: none;
+    }
+}
+

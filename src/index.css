@@ -1,0 +1,62 @@
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins"),
+    url(assets/fonts/Poppins-Regular.ttf) format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins"),
+    url(assets/fonts/Poppins-Bold.ttf) format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins"),
+    url(assets/fonts/Poppins-Medium.ttf) format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins"),
+    url(assets/fonts/Poppins-Light.ttf) format("truetype");
+  font-weight: 200;
+}
+
+*{
+  margin: 0;
+  font-family: Poppins !important; 
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Poppins !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.centerItems{
+  display: grid;
+  place-items: center;
+}
+
+.underline{
+  background-color: #e9ac43 !important;
+  height: 3px;
+  width: 20%;
+  margin-bottom: 26px;
+  margin: auto;
+}
+
+

@@ -1,0 +1,120 @@
+.hero{
+    padding: 200px 60px!important;
+}
+
+.hero__text{
+    font-weight: bold;
+    text-align: start;
+}
+
+.hero__text_p {
+    text-align: start;
+}
+
+.button_container{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.watch_video_button{
+    background-color: #161616 !important;
+    font-style: italic;
+    border: none !important;
+    padding: 5px 30px !important;
+    border: 1.5px solid #161616 !important;
+}
+
+.register_button{
+    border: 1.5px solid #161616 !important;
+    background-color: rgba(255, 0, 0, 0) !important;
+    color: #161616 !important;
+    margin-left: 8px;
+    padding: 5px 70px !important;
+    font-weight: bold !important;
+}
+
+.heroImg {
+    position: absolute;
+    top: 22%;
+    z-index: -1;
+    width: 18%;
+    left: 66%;
+}
+
+.gh_colors_modal{
+    margin: auto;
+    width: 98%;
+}
+
+.red_modal{
+    background-color: rgb(203, 0, 0);
+    height: 4px;
+}
+
+.yellow_modal{
+    background-color: #e4a400;
+    height: 4px;
+}
+
+.green_modal{
+    background-color: rgb(0, 103, 0);
+    height: 4px;
+}
+
+.my-modal {
+    width: 60vw !important;   /* Occupy the 90% of the screen width */
+    max-width: 60vw !important;
+} 
+
+.modal_image{
+    background-image: url(../../assets/img/modalImg.png);
+}
+
+@media (max-width: 830px){
+.heroImg {
+    position: absolute;
+    top: 13%;
+    z-index: -1;
+    width: 33%;
+    left: 33%;
+}
+
+ .hero__text{
+     margin-top: 33%;
+     font-size: 30px;
+     text-align: center;
+ }
+
+ .hero__text_p{
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 10%;
+ }
+
+ .watch_video_button{
+    background-color: #161616 !important;
+    font-style: italic;
+    border: none !important;
+    padding: 9px 20px !important;
+    border: 1.5px solid #161616 !important;
+    font-size: 12px !important;
+    margin-left: 6px;
+    width: 200px;
+}
+
+.register_button{
+    border: 1.5px solid #161616 !important;
+    background-color: rgba(255, 0, 0, 0) !important;
+    color: #161616 !important;
+    margin-left: 8px;
+    padding: 5px 30px !important;
+    font-weight: bold !important;
+    width: 47%;
+}
+
+.hero{
+    padding: 200px 10px!important;
+}
+
+}   

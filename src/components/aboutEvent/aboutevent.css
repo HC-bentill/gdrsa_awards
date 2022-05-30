@@ -1,0 +1,27 @@
+.under{
+    background-color: #e9ac43;
+    height: 3px;
+    width: 27%;
+    margin-bottom: 26px;
+  }
+
+  .left_text{
+    border-right:2px solid #2F2E415C;
+    padding-right: 40px;
+  }
+
+  .right_text{
+    padding-top: 130px;
+    padding-left: 40px !important;
+  }
+
+@media only screen and (max-width: 830px) {
+  .left_text{
+    padding: 0px 10px !important;
+  }
+
+  .right_text{
+    padding: 0px 30px !important;
+  }
+}
+

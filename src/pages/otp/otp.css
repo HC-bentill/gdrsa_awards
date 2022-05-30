@@ -1,0 +1,40 @@
+.resend_btn{
+    border: 2px solid lightgray;
+    width: 70%;
+    padding:10px;
+    border-radius: 10px;
+}
+
+.modal_heading{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.congrats{
+    width: 40%;
+}
+
+.congrats_video{
+    background-color: black !important;
+    border: none !important;
+    width: 50%;
+    padding: 15px !important;
+}
+
+@media only screen and (min-width: 830px) {
+    .my-modal{
+        width: 50% !important;    /* Occupy the 90% of the screen width */
+        max-width: 50% !important;
+    } 
+}
+
+
+@media only screen and (max-width: 830px) {
+    .congrats_video{
+        background-color: black !important;
+        border: none !important;
+        width: 80%;
+        padding: 15px !important;
+    }
+}
+

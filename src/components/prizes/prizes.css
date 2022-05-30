@@ -1,0 +1,26 @@
+.prizes{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: -1px;
+}
+
+.centerItems{
+    display: grid;
+    place-items: center;
+}
+
+.prizes_img{
+    width: 20%;
+}
+
+
+@media (max-width: 830px){
+    .prizes_text{
+        font-size: 13px;
+        margin-bottom: 55px !important;
+    }
+
+    .prizes_img{
+        width: 12%;
+    }
+}
