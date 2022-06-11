@@ -1,15 +1,15 @@
 import axios from 'axios';
-import JwtService from "./jwt.service";
+import {getItem} from "./jwt.service";
 import config from "../config";
 
-const token = JwtService.getItem("token");
+const token = getItem("token");
 
 axios.defaults.baseURL = config.baseAPIUrl;
 
 axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
 
 const headers = () => {
-  const token = JwtService.getItem("token");
+  const token = getItem("token");
   return {
     headers: {
        Authorization: `Bearer ${token}`, 

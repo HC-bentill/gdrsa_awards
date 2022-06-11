@@ -5,13 +5,13 @@ const options = {
 
     },
     development: {
-        baseAPIUrl: "https://awards-backend-6vrhx.ondigitalocean.app/"
+        baseAPIUrl: "https://gdrsa.herokuapp.com/"
     },
     staging: {
-        baseAPIUrl: "https://awards-backend-6vrhx.ondigitalocean.app/"
+        baseAPIUrl: "https://gdrsa.herokuapp.com/"
     },
     production: {
-        baseAPIUrl: "https://awards-backend-6vrhx.ondigitalocean.app/"
+        baseAPIUrl: "https://gdrsa.herokuapp.com/"
     }    
 }
 

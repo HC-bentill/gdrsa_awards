@@ -1,0 +1,100 @@
+.awardsboard_container {
+  padding: 20px;
+}
+
+.top_texts {
+  font-size: 14px;
+  color: gray;
+}
+
+.category_txt {
+  background-color: #1a237e;
+  color: white;
+  padding: 8px 17px;
+  border-radius: 7px;
+}
+
+.awardsboard_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.avatar {
+  margin-bottom: 12px;
+  margin-left: 12px;
+}
+
+.avatar_container {
+  margin-top: -19px;
+  display: flex;
+  align-items: flex-end;
+  justify-items: end;
+}
+
+.points {
+  background: rgba(255, 0, 0, 0);
+  padding: 6px;
+  border-radius: 7px;
+  color: #1a237e;
+  border: 1px #1a237e solid;
+}
+
+.steps {
+  width: 100%;
+}
+
+.MuiStepLabel-label.MuiStepLabel-alternativeLabel {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.MuiStepper-root {
+  display: flex;
+  padding: 30px 0px !important;
+}
+
+.quiz_images {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.dashboard_submit_button {
+  background-color: #1a237e !important;
+  border: none !important;
+  padding: 10px 0px !important;
+  border: 1.5px solid #1a237e !important;
+  margin-top: 19px;
+  width: 100%;
+  font-size: 13px !important;
+  border-radius: 7px !important;
+}
+
+.whatsappbtn{
+    width: 50%;
+    float: right;
+    object-fit: contain;
+}
+
+.lock_icon{
+  font-size: 30px;
+  position: absolute;
+  color: white;
+  margin-top: 10px;
+  margin-left: 16px;
+  z-index: 1;
+}
+
+@media (min-width: 830px) {
+  .awardsboard_container{
+    width: 50%;
+    margin: auto !important;
+  }
+  
+  .whatsappbtn{
+    width: 30%;
+    float: right;
+    object-fit: contain;
+}
+}

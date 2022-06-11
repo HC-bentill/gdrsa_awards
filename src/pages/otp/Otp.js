@@ -9,6 +9,8 @@ import { useSelector } from 'react-redux';
 import { selectRegistrationForm } from '../../features/appSlice';
 import { verifyOTP } from '../../api/register.service';
 import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
+import { storeItem } from '../../api/jwt.service';
 
 function Otp() {
 
@@ -18,10 +20,11 @@ function Otp() {
     const handleShow = () => setShow(true);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const registrationFormData = useSelector(selectRegistrationForm)
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         const dataToPost = {
-            phone: registrationFormData.phone,
+            phone: registrationFormData?.phone,
             code: OTP,
             otpType:"REGISTER"
         }
@@ -32,9 +35,10 @@ function Otp() {
         .then(response => {
             if (response.data.ok){
                 handleShow();
+                // storeItem(token, "token");
             }else{
                 swal({
-                    title: "Oops !",
+                    title: "An Error Occured !",
                     text: response.data.error.message,
                     icon: "error",
                 });
@@ -110,7 +114,7 @@ function Otp() {
         </Modal.Body>
             <div className='centerItems
             mb-5'>
-                <Button className='congrats_video'>Next</Button>
+                <Button className='congrats_video' onClick={() => navigate("/tasks")}>Next</Button>
             </div>
       </Modal>
       </>

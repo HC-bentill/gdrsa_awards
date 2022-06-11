@@ -1,0 +1,55 @@
+.levels_header {
+  background-color: #1a237e;
+  padding: 12px;
+}
+
+.levels_header_container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-right: 40px;
+}
+
+.return_icon{
+  color: white;
+  font-size: 24px;
+}
+
+.levels_top_text {
+  color: white;
+  font-size: 13px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.levels_step_label{
+    color:red !important;
+}
+
+.levels_intro_video{
+    width: 100%;
+    border-radius: 0px;
+    padding: 0px !important;
+    background-color: white;
+}
+
+.level_components{
+  padding: 15px 19px;
+}
+
+.carousel-control-prev {
+  left: 0;
+  height: 170px;
+}
+
+.carousel-control-next {
+  right: 0;
+  height: 170px;
+}
+
+@media (min-width: 830px){
+ .levels_container{
+   width: 50%;
+   margin: auto !important;
+ }
+}

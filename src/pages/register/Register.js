@@ -36,7 +36,8 @@ function Register() {
 
         const dataToPost = {
             phone: data.phone,
-            otpType: "REGISTER"
+            otpType: "REGISTER",
+            resend : false
         }
 
         requestOTP(dataToPost)
@@ -60,8 +61,8 @@ function Register() {
                 navigate("/otp")
             }else{
                 swal({
-                    title: "Oops !",
-                    text: "Your Form Could Not Be Submitted",
+                    title: "Your Form Could Not Be Submitted !",
+                    text: "Please Try Again",
                     icon: "error",
                   });
                   setIsSubmitting(false);
@@ -73,8 +74,8 @@ function Register() {
         })
         .catch(error => {
             swal({
-                title: "Oops !",
-                text: "An Error Occured",
+                title: "Network Connection Error !",
+                text: "Please Try Again",
                 icon: "error",
               });
             console.log(error)

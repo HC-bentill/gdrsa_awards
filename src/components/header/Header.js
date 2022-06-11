@@ -3,7 +3,7 @@ import { Col, Container, Nav, Navbar, NavDropdown, Row } from 'react-bootstrap';
 import Countdown from 'react-countdown';
 import './header.css';
 
-function Header() {
+function Header({countdown}) {
   return (
     <>
     <Navbar className='navbar'>
@@ -12,7 +12,11 @@ function Header() {
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
+                {countdown ? 
                 <Countdown className='countdown' date='2022-08-01' />
+                 :
+                 ""
+                }
             </Navbar.Text>
             </Navbar.Collapse>
         </Container>

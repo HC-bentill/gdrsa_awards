@@ -8,14 +8,15 @@ import { useNavigate } from 'react-router-dom';
 import ReactConfetti from 'react-confetti';
 
 function Hero() {
+
   const handleScroll = () => {
-  
     if(window.innerWidth <= 830 ){
       window.scrollBy(0,1700)
     }else{
       window.scrollBy(0,900)
     }
   }
+  
   const navigate = useNavigate();
   
   return (

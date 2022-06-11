@@ -1,8 +1,6 @@
 import React from 'react'
 import { Button, Col, Container, Row, Carousel } from 'react-bootstrap'
 import './videosection.css'
-import video from '../../assets/img/drifanvideo.png'
-import mobilevideo from '../../assets/img/mobilevideo.png'
 import Vid1 from '../../assets/videos/vid1.MP4'
 import Vid2 from '../../assets/videos/vid2.MP4'
 import ReactPlayer from 'react-player'
@@ -84,7 +82,7 @@ function VideoSection() {
                                     pip={true}
                                     width= "100%"
                                     controls={true}
-                                    playing={true}
+                                    playing={false}
                                 />
                                 {/* <video autoPlay muted width="340" height="400" controls >
                                     <source src={video.src} type="video/mp4"/>

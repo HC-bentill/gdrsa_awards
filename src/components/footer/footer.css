@@ -42,7 +42,13 @@
         padding-bottom: 0px;
     }
 
-}
+    .social_media_icons{
+        padding-left: 39px !important;
+    }
+
+    .social_media_icons > a{
+        color: inherit;    }
+    }
 
 @media only screen and (min-width: 830px) {
     .mobile_footer{
