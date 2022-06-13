@@ -19,7 +19,7 @@ function AppRoutes() {
         ) : (
           <Route path="*" element={<Home />} />
         )}
-        <Route path="*" element={<Signin />} />
+        <Route path="alt-signin" element={<Signin />} />
         <Route path="otp-signin" element={<SignInOTP />} />
         <Route path="register" element={<Register />} />
         <Route path="otp" element={<Otp />} />

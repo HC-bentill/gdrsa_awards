@@ -26,7 +26,7 @@ function Header({ countdown, signin, title }) {
               {signin ? (
                 <button
                   className="signin_header"
-                  onClick={() => navigate("/signin")}
+                  onClick={() => navigate("/alt-signin")}
                 >
                   Sign in
                 </button>

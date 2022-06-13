@@ -10,6 +10,7 @@ import { selectRegistrationForm } from "../../features/appSlice";
 import {
   registerUser,
   resendOTP,
+  signin,
   signinResendOTP,
   signinverifyOTP,
   verifyOTP,
@@ -36,7 +37,7 @@ function Otp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSubmit = (data) => {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     const dataToSubmit = {
       phone: registrationFormData?.phone,
       code: OTP,
@@ -44,24 +45,35 @@ function Otp() {
 
     signinverifyOTP(dataToSubmit)
       .then((response) => {
-        setIsSubmitting(false)
+        setIsSubmitting(false);
         if (response.data.ok) {
-          swal({
-            title: "Successful",
-            text: "Logged in",
-            icon: "success",
-          });
-          dispatch(setLogin(true));
+          signin(dataToSubmit)
+            .then((res) => {
+              storeItem(res.data.data.token, "token");
+              swal({
+                title: "Successful",
+                text: "Logged in",
+                icon: "success",
+              });
+              dispatch(setLogin(true));
+            })
+            .catch((err) => {
+              swal({
+                title: "Sorry, An Error Occured !",
+                text: err.response.data.error.message,
+                icon: "error",
+              });
+            });
         } else {
           swal({
             title: "Sorry, An Error Occured !",
-            text: "Check Internet Connectivity",
+            text: "Check Internet Connectivity and try again",
             icon: "error",
           });
         }
       })
       .catch((error) => {
-        setIsSubmitting(false)
+        setIsSubmitting(false);
         swal({
           title: "Sorry, An Error Occured !",
           text: error.response.data.error.message,
@@ -72,14 +84,14 @@ function Otp() {
   };
 
   const handleResendOtp = () => {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     const dataToResend = {
       phone: registrationFormData?.phone,
       resend: true,
     };
     signinResendOTP(dataToResend)
       .then((response) => {
-        setIsSubmitting(false)
+        setIsSubmitting(false);
 
         if (response.data.ok) {
           swal({
