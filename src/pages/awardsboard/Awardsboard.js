@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Modal, Row } from "react-bootstrap";
 import "./awardsboard.css";
 import { Avatar, Step, StepLabel, Stepper } from "@material-ui/core";
@@ -9,6 +9,7 @@ import whatsapp from "../../assets/img/whatsapp_button.png";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineLock } from "react-icons/md";
+import { AiOutlineUser } from "react-icons/ai";
 import {
   EmailShareButton,
   FacebookShareCount,
@@ -17,6 +18,10 @@ import {
 } from "react-share";
 import { BASE_URL } from "../../constants/baseURL";
 import { ShareSocial } from "react-share-social";
+import { destroyItem, storeItem } from "../../api/jwt.service";
+import swal from "sweetalert";
+import { useDispatch } from "react-redux";
+import { setLogout } from "../../features/userSlice";
 
 function Awardsboard() {
   const [show, setShow] = useState(false);
@@ -24,6 +29,31 @@ function Awardsboard() {
   const handleShow = () => setShow(true);
   const steps = ["Register", "Online Quiz", "Interview", "Pitch", "Finale"];
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    swal({
+      title: "Please Confirm?",
+      text: "Are you sure you want to leave !",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willLogout) => {
+      if (willLogout) {
+        dispatch(setLogout());
+        destroyItem("token");
+        window.location.replace("/");
+        swal({
+          title: "Logged Out!",
+          text: "Success !",
+          icon: "success",
+          timer: 3000,
+          button: false,
+        });
+      } else {
+      }
+    });
+  };
 
   const style = {
     background: "whitesmoke",
@@ -52,6 +82,10 @@ function Awardsboard() {
     },
   ];
 
+  useEffect(() => {
+    storeItem(true, "dashboard visited");
+  });
+
   return (
     <>
       <Row className="awardsboard_container">
@@ -61,28 +95,31 @@ function Awardsboard() {
           </p>
           <div>
             <p style={{ fontSize: "16px" }} className="top_texts">
-              <strong>Welcome to your Awardsboard</strong>
+              Awardsboard
             </p>
 
             <div className="awardsboard_header">
               <div>
-                <h1 className="">
-                  <strong>Kwaku</strong>
-                </h1>
-                <p className="mt-4">
+                <div className="custom_flex">
+                  {/* <Avatar
+                    className="avatar"
+                    style={{ background: "orange", padding: "25px", marginRight:"7px" }}
+                  >
+                    
+                  </Avatar> */}
+                  <AiOutlineUser onClick={() => handleLogout()} className="avatar"/>
+                  <h4 className="">
+                    Kwaku
+                  </h4>
+                </div>
+                <p className="mt-3">
                   <span className="category_txt">Ride Hailing</span> : Uber
                 </p>
               </div>
               <div className="avatar_container">
                 <div>
-                  <Avatar
-                    className="avatar"
-                    style={{ background: "orange", padding: "25px" }}
-                  >
-                    K
-                  </Avatar>
                   <div className="points">
-                    12 pts <span>⭐</span>
+                    5 pts <span>⭐</span>
                   </div>
                 </div>
               </div>
@@ -145,12 +182,12 @@ function Awardsboard() {
 
       {/*  modal*/}
       <Modal show={show} onHide={handleClose}>
-          <ShareSocial
-            style={style}
-            url={BASE_URL}
-            socialTypes={["facebook", "twitter", "reddit", "linkedin", "email"]}
-            title={'Invite A Friend'}
-          />
+        <ShareSocial
+          style={style}
+          url={BASE_URL}
+          socialTypes={["facebook", "twitter", "linkedin", "email"]}
+          title={"Invite A Friend"}
+        />
       </Modal>
     </>
   );

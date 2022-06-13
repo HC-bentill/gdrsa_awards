@@ -11,41 +11,49 @@ export const driverTypeOptions = [
     {
         src: taxi,
         driverType:"taxi",
-        alt:"img"
+        value:"TAXI",
+        alt:"Taxi"
     },
     {
         src: rideHailing,
         driverType:"ride hailing",
-        alt:"img"
+        value:"RIDE-HAILING",
+        alt:"Ride Hailing"
     },
     {
         src: intracity,
         driverType:"intra-city",
-        alt:"img"
+        value:"INTRA-CITY",
+        alt:"intra-city"
     },
     {
         src: intercity,
         driverType:"inter-city",
-        alt:"img"
+        value:"INTER-CITY",
+        alt:"intercity"
     },
     {
         src: Corporate,
         driverType:"corporate",
-        alt:"img"
+        value:"CORPORATE",
+        alt:"Corporate"
     },
     {
         src: Haulage,
         driverType:"haulage",
-        alt:"img"
+        value:"HAULAGE/TRUCKS",
+        alt:"Haulage"
     },
     {
         src: schoolbus,
         driverType:"school bus",
-        alt:"img"
+        value:"SCHOOL-BUS",
+        alt:"schoolbus"
     },
     {
         src: dispatch,
         driverType:"dispatch",
-        alt:"img"
+        value:"DISPATCH",
+        alt:"dispatch"
     }
 ];

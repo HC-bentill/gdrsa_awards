@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import inviteIcon from "../../assets/icons/invite.png";
 import starIcon from "../../assets/icons/star.png";
@@ -6,6 +6,8 @@ import whatsappIcon from "../../assets/icons/whatsapp.png";
 import checkBoxIcon from "../../assets/icons/checkbox.png";
 import "./tasks.css";
 import { useNavigate } from "react-router-dom";
+import { setLogin } from "../../features/userSlice";
+import { useDispatch } from "react-redux";
 
 const tasksData = [
   "Complete online Test in 30days",
@@ -29,6 +31,11 @@ const featuresData = [
 ];
 
 function Tasks() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setLogin(true));
+  });
   const navigate = useNavigate();
   return (
     <>
@@ -82,7 +89,7 @@ function Tasks() {
         <Button
           type="submit"
           className="tasks_submit_button mt-5"
-          onClick={() => navigate("/awardsboard")}
+          onClick={() => navigate("/")}
         >
           Start
         </Button>
@@ -146,7 +153,7 @@ function Tasks() {
             <Button
               type="submit"
               className="tasks_submit_button mt-5"
-              onClick={() => navigate("/dashboard")}
+              onClick={() => navigate("/")}
             >
               Start
             </Button>

@@ -1,83 +1,101 @@
 .welcomeImg {
-    position: absolute;
-    top: 22%;
-    z-index: -1;
-    width: 18%;
-    left: 66%;
+  position: absolute;
+  top: 22%;
+  z-index: -1;
+  width: 18%;
+  left: 66%;
 }
 
-.welcome__text{
-    font-weight: bold;
-    text-align: center;
+.welcome__text {
+  font-weight: bold;
+  text-align: center;
 }
 
 .welcome__text_p {
-    text-align: center;
-    margin-bottom: 8px !important;
+  text-align: center;
+  margin-bottom: 8px !important;
 }
 
-.welcome{
-    padding: 100px 50px!important;
+.welcome {
+  padding: 100px 50px !important;
 }
 
-.welcome_submit_button{
+.welcome_submit_button {
+  background-color: #161616 !important;
+  border: none !important;
+  padding: 10px 0px !important;
+  border: 1.5px solid #161616 !important;
+  margin-top: 19px;
+  width: 50%;
+  font-size: 19px !important;
+  border-radius: 7px !important;
+}
+
+.submit_button_signin {
+  background-color: #161616 !important;
+  border: none !important;
+  padding: 10px 0px !important;
+  border: 1.5px solid #161616 !important;
+  margin-top: 19px;
+  width: 50%;
+  font-size: 19px !important;
+  border-radius: 7px !important;
+}
+
+@media (max-width: 830px) {
+  .submit_button_signin {
     background-color: #161616 !important;
     border: none !important;
     padding: 10px 0px !important;
     border: 1.5px solid #161616 !important;
     margin-top: 19px;
-    width: 50%;
+    width: 70%;
     font-size: 19px !important;
     border-radius: 7px !important;
+  }
+  .welcomeImg {
+    position: absolute;
+    top: 13%;
+    z-index: -1;
+    width: 23%;
+    left: 38%;
+  }
+  .welcome__text {
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
 
-}
+  .welcome__text_p {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 10%;
+  }
 
+  .welcome_form_inputs {
+    padding: 20px !important;
+    border-radius: 13px !important;
+    font-size: 14px;
+    text-align: center;
+  }
 
-@media (max-width: 830px){
-    .welcomeImg {
-        position: absolute;
-        top: 13%;
-        z-index: -1;
-        width: 23%;
-        left: 38%;
-    }   
-    .welcome__text{
-        margin-top: 20px;
-        font-size: 30px;
-        text-align: center;
-    }
-   
-    .welcome__text_p{
-       text-align: center;
-       margin-top: 5%;
-       margin-bottom: 10%;
-    }
+  .welcome {
+    padding: 200px 10px !important;
+  }
 
-    .welcome_form_inputs{
-        padding: 20px !important; 
-        border-radius: 13px !important;
-        font-size: 14px;
-        text-align: center;
-    }
+  .welcome_container {
+    height: 100vh;
+    overflow-y: hidden;
+  }
 
-    .welcome{
-        padding: 200px 10px!important;
-    }
-
-    .welcome_container {
-        height: 100vh;
-        overflow-y: hidden;
-    }
-
-    .welcome_submit_button{
-        background-color: #161616 !important;
-        border: none !important;
-        padding: 10px 0px !important;
-        border: 1.5px solid #161616 !important;
-        margin-top: 19px;
-        width: 100%;
-        font-size: 19px !important;
-        border-radius: 7px !important;
-    
-    }
+  .welcome_submit_button {
+    background-color: #161616 !important;
+    border: none !important;
+    padding: 10px 0px !important;
+    border: 1.5px solid #161616 !important;
+    margin-top: 19px;
+    width: 100%;
+    font-size: 19px !important;
+    border-radius: 7px !important;
+  }
 }

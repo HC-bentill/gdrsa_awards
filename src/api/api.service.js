@@ -12,7 +12,7 @@ const headers = () => {
   const token = getItem("token");
   return {
     headers: {
-       Authorization: `Bearer ${token}`, 
+       Authorization: `${token}`, 
     },
   };
 };

@@ -9,6 +9,10 @@
     color: #292929 !important;
 }
 
+.navbar_brand2{
+    font-size: 14px;
+}
+
 .countdown{
     background-color: #161616;
     color: #E9AC43;
@@ -35,6 +39,17 @@
     background-color: rgb(0, 103, 0);
     height: 3px;
 }
+
+.signin_header {
+    background-color: #161616 !important;
+    border: none !important;
+    color: white;
+    border: 1.5px solid #161616 !important;
+    font-size: 16px !important;
+    border-radius: 7px !important;
+    padding: 5px 15px;
+  }
+  
 
 @media (max-width: 830px){
     .gh_colors{

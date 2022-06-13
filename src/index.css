@@ -59,4 +59,9 @@ code {
   margin: auto;
 }
 
+.custom_flex{
+  display: flex;
+  align-items: center;
+}
+
 

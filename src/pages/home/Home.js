@@ -11,7 +11,7 @@ import Footer from '../../components/footer/Footer'
 function Home() {
   return (
     <>
-        <Header/>
+        <Header signin={true}/>
         <Hero/>
         <Prizes/>
         <VideoSection/>
