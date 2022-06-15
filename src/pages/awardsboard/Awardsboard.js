@@ -31,7 +31,7 @@ function Awardsboard() {
   const steps = ["Register", "Online Quiz", "Interview", "Pitch", "Finale"];
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user= useSelector(selectUser);
+  const user = useSelector(selectUser);
 
   const handleLogout = () => {
     swal({
@@ -84,29 +84,32 @@ function Awardsboard() {
     },
   ];
 
-  useEffect(() => { 
+  useEffect(() => {
     storeItem(true, "dashboard visited");
     whoAmI()
       .then((response) => {
         if (response?.data.ok) {
           console.log("user details =", response?.data.data);
-          dispatch(setLogin({
-              ...response?.data.data
-          }))
+          dispatch(
+            setLogin({
+              ...response?.data.data,
+            })
+          );
         } else {
           console.log("response error =", response);
         }
       })
       .catch((error) => {
         console.log("errormsg = ", error);
+        dispatch(setLogout());
         swal({
           title: "Sorry, An Error Occured !",
           text: error?.response.data.error.message,
           icon: "error",
         });
-      }); 
-  },[]);
-  
+      });
+  }, []);
+
   return (
     <>
       <Row className="awardsboard_container">
@@ -135,7 +138,8 @@ function Awardsboard() {
                   <h5 className="">{user?.firstName}</h5>
                 </div>
                 <p className="mt-3">
-                  <span className="category_txt">{user?.category}</span> : {user?.organisationName}
+                  <span className="category_txt">{user?.category}</span> :{" "}
+                  {user?.organisationName}
                 </p>
               </div>
               <div className="avatar_container">
@@ -215,4 +219,4 @@ function Awardsboard() {
   );
 }
 
-export default Awardsboard;
+export default React.memo(Awardsboard)

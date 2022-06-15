@@ -1,18 +1,27 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Awardsboard from "../../pages/awardsboard/Awardsboard";
-import Levels from "../../pages/levels/Levels";
+
+const Awardsboard = React.lazy(() => import("../../pages/awardsboard/Awardsboard"));
+const Levels = React.lazy(() => import("../../pages/levels/Levels"));
+
+const loading = (
+  <div data-testid="loader" className="loader_container">
+    <div className="loader"></div>
+  </div>
+);
 
 function Dashboard() {
   const navigate = useNavigate();
 
   return (
     <>
-      <Routes>
-        <Route path="*" element={<Awardsboard />} />
-        <Route path="/levels" element={<Levels />} />
-      </Routes>
+      <React.Suspense fallback={loading}>
+        <Routes>
+          <Route path="*" element={<Awardsboard />} />
+          <Route path="/levels" element={<Levels />} />
+        </Routes>
+      </React.Suspense>
     </>
   );
 }

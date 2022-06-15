@@ -3,7 +3,7 @@ import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import OTPInput, { ResendOTP } from "otp-input-react";
 import congrats from "../../assets/img/congrats.png";
 import { FiYoutube } from "react-icons/fi";
-import "./otp.css";
+import "./signinotp.css";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRegistrationForm } from "../../features/appSlice";
@@ -136,7 +136,7 @@ function Otp() {
               </div>
               <div className="centerItems form_container">
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                  <p className="mb-4 text-center form_heading">OTP</p>
+                  <p className="mb-2 text-center form_heading">OTP</p>
                   <p>Kindly enter 4 digit PIN sent to your phone</p>
                   <div className="centerItems">
                     <OTPInput

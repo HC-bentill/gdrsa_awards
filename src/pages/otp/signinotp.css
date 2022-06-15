@@ -1,0 +1,142 @@
+.resend_btn {
+  border: 2px solid lightgray;
+  width: 70%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.modal_heading {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.congrats {
+  width: 40%;
+}
+
+.congrats_video {
+  background-color: black !important;
+  border: none !important;
+  width: 50%;
+  padding: 15px !important;
+}
+
+.register_container {
+  height: 100vh;
+}
+
+.register_img {
+  background-image: url(../../assets/img/modalImg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.gh_colors {
+  width: 100%;
+}
+
+.red {
+  background-color: rgb(203, 0, 0);
+  height: 4px;
+}
+
+.yellow {
+  background-color: yellow;
+  height: 4px;
+}
+
+.green {
+  background-color: rgb(0, 103, 0);
+  height: 4px;
+}
+
+.form_container {
+  height: 100%;
+}
+
+.form_heading {
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.form_inputs {
+  padding: 14px !important;
+  border-radius: 13px !important;
+}
+
+.submit_button {
+  background-color: #161616 !important;
+  border: none !important;
+  padding: 10px 0px !important;
+  border: 1.5px solid #161616 !important;
+  margin-top: 19px;
+  width: 100%;
+  font-size: 19px !important;
+  border-radius: 7px !important;
+}
+
+.react-tel-input .form-control {
+  width: 100% !important;
+  border-radius: 13px !important;
+  height: 50px !important;
+}
+
+.category_img {
+  width: 70%;
+}
+
+@media only screen and (min-width: 830px) {
+  .my-modal {
+    width: 50% !important; /* Occupy the 90% of the screen width */
+    max-width: 50% !important;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .congrats_video {
+    background-color: black !important;
+    border: none !important;
+    width: 80%;
+    padding: 15px !important;
+  }
+
+  .register_img {
+    display: none;
+  }
+
+  .mobile_form_container {
+    padding: 30px !important;
+  }
+
+  .form_heading {
+    font-size: 23px;
+    text-align: center;
+    color: #2f2e41;
+    margin-bottom: 80px !important;
+    font-weight: 800;
+    margin-top: 2px;
+  }
+
+  .gh_colors {
+    display: inline;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95%;
+  }
+
+  .form_bottom_text {
+    font-size: 13px;
+  }
+
+  .resend_btn {
+    border: 2px solid lightgray;
+    width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}

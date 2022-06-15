@@ -128,7 +128,7 @@ function Otp() {
             </div>
             <div className="centerItems form_container">
               <Form onSubmit={handleSubmit(onSubmit)}>
-                <p className="mb-4 text-center form_heading">OTP</p>
+                <p className="mb-2 text-center form_heading">OTP</p>
                 <p>Kindly enter 4 digit PIN sent to your phone</p>
                 <div className="centerItems">
                   <OTPInput

@@ -1,17 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "../components/dashboard/Dashboard";
-import Levels from "../pages/levels/Levels";
-import Tasks from "../pages/tasks/Tasks";
+
+const Dashboard = React.lazy(() => import("../components/dashboard/Dashboard"));
+const Levels = React.lazy(() => import("../pages/levels/Levels"));
+const Tasks = React.lazy(() => import("../pages/tasks/Tasks"));
+
+const loading = (
+  <div data-testid="loader" className="loader_container">
+    <div className="loader"></div>
+  </div>
+);
 
 function LoginRoutes() {
   return (
     <>
-      <Routes>
-        <Route path="*" element={<Dashboard />} />
-        <Route path="/levels" element={<Levels />} />
-        <Route path="/tasks" element={<Tasks />} />
-      </Routes>
+      <React.Suspense fallback={loading}>
+        <Routes>
+          <Route path="*" element={<Dashboard />} />
+          <Route path="/levels" element={<Levels />} />
+          <Route path="/tasks" element={<Tasks />} />
+        </Routes>
+      </React.Suspense>
     </>
   );
 }

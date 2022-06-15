@@ -23,7 +23,7 @@ axios.interceptors.response.use(
   },
   (error) => {
     if (error && error.response && error.response.status === 401) {
-      window.location.replace("/auth?tokenExpired=false");
+      window.location.replace("/");
     }
     return Promise.reject(error);
   }
