@@ -6,8 +6,10 @@ import whatsappIcon from "../../assets/icons/whatsapp.png";
 import checkBoxIcon from "../../assets/icons/checkbox.png";
 import "./tasks.css";
 import { useNavigate } from "react-router-dom";
-import { setLogin } from "../../features/userSlice";
+import { setLogin, setLogout } from "../../features/userSlice";
 import { useDispatch } from "react-redux";
+import { getItem } from "../../api/jwt.service";
+import swal from "sweetalert";
 
 const tasksData = [
   "Complete online Test in 30days",
@@ -33,9 +35,24 @@ const featuresData = [
 function Tasks() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setLogin(true));
-  });
+const handleVerifiedLogin = () => {
+  const token = getItem("token");
+  if (token){
+    dispatch(setLogin(true))
+    .then(navigate("/"))
+  }else{
+    dispatch(setLogout());
+    swal({
+      title: "Not Allowed",
+      text: "Please Sign in or Register",
+      icon: "error",
+    })
+    .then(
+      navigate("/")
+    );
+  }
+}
+
   const navigate = useNavigate();
   return (
     <>
@@ -47,9 +64,9 @@ function Tasks() {
         <div className="mt-4 mb-4 tasks_video_container">
           <iframe
             src="https://www.youtube.com/embed/668nUCeBHyY"
-            frameborder="0"
+            frameBorder="0"
             // allow='autoplay; encrypted-media'
-            allowfullscreen
+            allowFullScreen
             title="video"
             width="100%"
             height="100%"
@@ -89,7 +106,7 @@ function Tasks() {
         <Button
           type="submit"
           className="tasks_submit_button mt-5"
-          onClick={() => navigate("/")}
+          onClick={() => handleVerifiedLogin()}
         >
           Start
         </Button>
@@ -153,7 +170,7 @@ function Tasks() {
             <Button
               type="submit"
               className="tasks_submit_button mt-5"
-              onClick={() => navigate("/")}
+              onClick={() => handleVerifiedLogin()}
             >
               Start
             </Button>

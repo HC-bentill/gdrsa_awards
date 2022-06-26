@@ -50,6 +50,7 @@ function Otp() {
           signin(dataToSubmit)
             .then((res) => {
               storeItem(res.data.data.token, "token");
+              navigate("/");
               swal({
                 title: "Successful",
                 text: "Logged in",
@@ -63,6 +64,7 @@ function Otp() {
                 text: err.response.data.error.message,
                 icon: "error",
               });
+              navigate("/");
             });
         } else {
           swal({
@@ -70,6 +72,7 @@ function Otp() {
             text: "Check Internet Connectivity and try again",
             icon: "error",
           });
+          navigate("/");
         }
       })
       .catch((error) => {
@@ -119,54 +122,48 @@ function Otp() {
 
   return (
     <>
-      {isSubmitting ? (
-        <div data-testid="loader" className="loader_container">
-          <div className="loader"></div>
-        </div>
-      ) : (
-        <div style={{ overflow: "hidden" }}>
-          <Row className="register_container">
-            <Col sm={12} md={6}>
-              <div className="gh_colors">
-                <Row>
-                  <Col className="red"></Col>
-                  <Col className="yellow"></Col>
-                  <Col className="green"></Col>
-                </Row>
-              </div>
-              <div className="centerItems form_container">
-                <Form onSubmit={handleSubmit(onSubmit)}>
-                  <p className="mb-2 text-center form_heading">OTP</p>
-                  <p>Kindly enter 4 digit PIN sent to your phone</p>
-                  <div className="centerItems">
-                    <OTPInput
-                      inputClassName="otp_input"
-                      value={OTP}
-                      onChange={setOTP}
-                      autoFocus
-                      OTPLength={4}
-                      otpType="number"
-                      disabled={false}
-                      secure
-                    />
-                    <ResendOTP
-                      className="resend_btn mt-4"
-                      // maxTime={180}
-                      onResendClick={() => handleResendOtp()}
-                    />
-                  </div>
-                  <Form.Group className="centerItems">
-                    <Button type="submit" className="submit_button">
-                      Submit
-                    </Button>
-                  </Form.Group>
-                </Form>
-              </div>
-            </Col>
-            <Col className="register_img" sm={12} md={6}></Col>
-          </Row>
-        </div>
-      )}
+      <div style={{ overflow: "hidden" }}>
+        <Row className="register_container">
+          <Col sm={12} md={6}>
+            <div className="gh_colors">
+              <Row>
+                <Col className="red"></Col>
+                <Col className="yellow"></Col>
+                <Col className="green"></Col>
+              </Row>
+            </div>
+            <div className="centerItems form_container">
+              <Form onSubmit={handleSubmit(onSubmit)}>
+                <p className="mb-2 text-center form_heading">OTP</p>
+                <p>Kindly enter 4 digit PIN sent to your phone</p>
+                <div className="centerItems">
+                  <OTPInput
+                    inputClassName="otp_input"
+                    value={OTP}
+                    onChange={setOTP}
+                    autoFocus
+                    OTPLength={4}
+                    otpType="number"
+                    disabled={false}
+                    secure
+                  />
+                  <ResendOTP
+                    className="resend_btn mt-4"
+                    // maxTime={180}
+                    onResendClick={() => handleResendOtp()}
+                  />
+                </div>
+                <Form.Group className="centerItems">
+                  <Button type="submit" className="submit_button">
+                    Submit
+                  </Button>
+                </Form.Group>
+              </Form>
+            </div>
+          </Col>
+          <Col className="register_img" sm={12} md={6}></Col>
+        </Row>
+      </div>
       {/* ---Modal--- */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Body className="centerItems pt-5">

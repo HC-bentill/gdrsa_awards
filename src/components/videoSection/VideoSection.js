@@ -72,7 +72,7 @@ function VideoSection() {
 
                 </Container>
 
-                <p className='text-center mt-5'>Awards Intro Video</p>
+                <p className='text-center mt-5'>Watch Intro Video</p>
                 <div className='centerItems'>
                     <Carousel interval={null}>
                         {videoProperties.map((video) => (

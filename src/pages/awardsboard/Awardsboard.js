@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Modal, Row } from "react-bootstrap";
+import { Button, Col, Dropdown, Modal, Row } from "react-bootstrap";
 import "./awardsboard.css";
 import { Avatar, Step, StepLabel, Stepper } from "@material-ui/core";
 import quiz from "../../assets/img/onlineQuizzes.png";
@@ -11,13 +11,20 @@ import { useNavigate } from "react-router-dom";
 import { MdOutlineLock } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import {
-  EmailShareButton,
-  FacebookShareCount,
-  TwitterIcon,
+  WhatsappShareButton,
   WhatsappIcon,
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  TelegramShareButton,
+  TelegramIcon,
+  EmailShareButton,
+  EmailIcon,
 } from "react-share";
 import { BASE_URL } from "../../constants/baseURL";
-import { ShareSocial } from "react-share-social";
 import { destroyItem, storeItem } from "../../api/jwt.service";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,11 +42,12 @@ function Awardsboard() {
 
   const handleLogout = () => {
     swal({
-      title: "Please Confirm?",
-      text: "Are you sure you want to leave !",
+      title: "Are you sure you want to logout ?",
+      text: "Please Confirm",
       icon: "warning",
       buttons: true,
       dangerMode: true,
+      buttons: ["No", "Yes"],
     }).then((willLogout) => {
       if (willLogout) {
         dispatch(setLogout());
@@ -125,16 +133,28 @@ function Awardsboard() {
             <div className="awardsboard_header">
               <div>
                 <div className="custom_flex">
-                  {/* <Avatar
-                    className="avatar"
-                    style={{ background: "orange", padding: "25px", marginRight:"7px" }}
-                  >
-                    
-                  </Avatar> */}
-                  <AiOutlineUser
-                    onClick={() => handleLogout()}
-                    className="avatar"
-                  />
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      variant="secondary"
+                      className="avatar_toggle"
+                      id="dropdown-basic"
+                    >
+                      <AiOutlineUser
+                        id="dropdown-split-basic"
+                        className="avatar"
+                      />
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu className="avatar_menu">
+                      <Dropdown.Item onClick={() => navigate("/guidelines")}>
+                        Watch Guide Video
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleLogout()}>
+                        Logout
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+
                   <h5 className="">{user?.firstName}</h5>
                 </div>
                 <p className="mt-3">
@@ -208,15 +228,59 @@ function Awardsboard() {
 
       {/*  modal*/}
       <Modal show={show} onHide={handleClose}>
-        <ShareSocial
-          style={style}
-          url={BASE_URL}
-          socialTypes={["facebook", "twitter", "linkedin", "email"]}
-          title={"Invite A Friend"}
-        />
+        <Modal.Body>
+          <WhatsappShareButton
+            quote={
+              "You have been invited to the Ghana Driver Awards Competition; Click the link to join"
+            }
+            url={BASE_URL}
+          >
+            <WhatsappIcon size={40} round={true} />
+          </WhatsappShareButton>
+          <FacebookShareButton
+            quote={
+              "You have been invited to the Ghana Driver Awards Competition; Click the link to join"
+            }
+            url={BASE_URL}
+          >
+            <FacebookIcon size={40} round={true} />
+          </FacebookShareButton>
+          <TwitterShareButton
+            quote={
+              "You have been invited to the Ghana Driver Awards Competition; Click the link to join"
+            }
+            url={BASE_URL}
+          >
+            <TwitterIcon size={40} round={true} />
+          </TwitterShareButton>
+          <LinkedinShareButton
+            quote={
+              "You have been invited to the Ghana Driver Awards Competition; Click the link to join"
+            }
+            url={BASE_URL}
+          >
+            <LinkedinIcon size={40} round={true} />
+          </LinkedinShareButton>
+          <TelegramShareButton
+            quote={
+              "You have been invited to the Ghana Driver Awards Competition; Click the link to join"
+            }
+            url={BASE_URL}
+          >
+            <TelegramIcon size={40} round={true} />
+          </TelegramShareButton>
+          <EmailShareButton
+            quote={
+              "You have been invited to the Ghana Driver Awards Competition; Click the link to join"
+            }
+            url={BASE_URL}
+          >
+            <EmailIcon size={40} round={true} />
+          </EmailShareButton>
+        </Modal.Body>
       </Modal>
     </>
   );
 }
 
-export default React.memo(Awardsboard)
+export default React.memo(Awardsboard);

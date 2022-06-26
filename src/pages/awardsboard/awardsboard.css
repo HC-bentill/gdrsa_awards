@@ -27,7 +27,7 @@
   background-color: orange;
   border-radius: 100%;
   font-size: 50px;
-  padding:6px;
+  padding: 6px;
   margin-right: 8px;
   color: white;
 }
@@ -78,13 +78,13 @@
   border-radius: 7px !important;
 }
 
-.whatsappbtn{
-    width: 50%;
-    float: right;
-    object-fit: contain;
+.whatsappbtn {
+  width: 50%;
+  float: right;
+  object-fit: contain;
 }
 
-.lock_icon{
+.lock_icon {
   font-size: 30px;
   position: absolute;
   color: white;
@@ -93,15 +93,32 @@
   z-index: 1;
 }
 
+.avatar_toggle {
+  padding: 0px !important;
+  background-color: rgba(255, 0, 0, 0) !important;
+  border: none;
+}
+
+.avatar_toggle:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.avatar_menu{
+  background-color: whitesmoke !important;
+  font-size: 14px;
+}
+
 @media (min-width: 830px) {
-  .awardsboard_container{
+  .awardsboard_container {
     width: 50%;
     margin: auto !important;
   }
-  
-  .whatsappbtn{
+
+  .whatsappbtn {
     width: 30%;
     float: right;
     object-fit: contain;
-}
+  }
 }

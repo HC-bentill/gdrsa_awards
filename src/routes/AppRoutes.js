@@ -9,21 +9,15 @@ const SignInOTP = React.lazy(() => import("../pages/otp/SignInOTP"));
 const Signin = React.lazy(() => import("../pages/signin/Signin"));
 const Tasks = React.lazy(() => import("../pages/tasks/Tasks"));
 
-const loading = (
-  <div data-testid="loader" className="loader_container">
-    <div className="loader"></div>
-  </div>
-);
 
 function AppRoutes() {
   const dashboardVisited = getItem("dashboard visited");
   console.log("dashboardVisited = ", dashboardVisited);
   return (
     <>
-      <React.Suspense fallback={loading}>
         <Routes>
           {dashboardVisited ? (
-            <Route path="*" element={<Home />} />
+            <Route path="*" element={<Signin />} />
           ) : (
             <Route path="*" element={<Home />} />
           )}
@@ -33,7 +27,6 @@ function AppRoutes() {
           <Route path="otp" element={<Otp />} />
           <Route path="tasks" element={<Tasks />} />
         </Routes>
-      </React.Suspense>
     </>
   );
 }

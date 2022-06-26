@@ -1,0 +1,13 @@
+.partnersLogo {
+  width: 40%;
+  object-fit: contain;
+  margin: auto;
+}
+
+@media only screen and (max-width: 830px) {
+  .partnersLogo {
+    width: 70%;
+    object-fit: contain;
+    margin: auto;
+  }
+}

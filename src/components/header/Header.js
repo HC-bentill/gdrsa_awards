@@ -11,9 +11,8 @@ function Header({ countdown, signin, title }) {
       <Navbar className="navbar">
         <Container>
           <Navbar.Brand  href="/">
-            
             {!title ? <p className="navbar_brand">gdrsa<br></br>FOUNDATION</p> : ""}
-            {title ? <p className="navbar_brand2">Ghana Driver Awards Association</p> : ""}
+            {title ? <p className="navbar_brand2">Ghana Driver & Safety Awards</p> : ""}
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">

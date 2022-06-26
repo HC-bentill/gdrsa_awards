@@ -77,12 +77,13 @@
     }
 
     .form_heading{
-        font-size: 23px;
+        font-size: 18px;
         text-align: center;
         color: #2f2e41;
         margin-bottom: 80px !important;
         font-weight: 800;
         margin-top: 2px;
+        margin-left: 25px;
     }
 
     .gh_colors{
@@ -95,6 +96,13 @@
 
     .form_bottom_text{
         font-size: 13px;
+    }
+
+    .register_return_icon{
+        font-size: 30px;
+        position: relative;
+        top: -39px;
+        left:0px;
     }
     
 }

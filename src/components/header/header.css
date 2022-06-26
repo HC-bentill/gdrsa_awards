@@ -7,10 +7,12 @@
     font-size: 16px !important;
     font-weight: 800 !important;
     color: #292929 !important;
+    margin-bottom: 1px !important;
 }
 
 .navbar_brand2{
     font-size: 14px;
+    margin-bottom: 1px !important;
 }
 
 .countdown{

@@ -6,9 +6,19 @@ const Awardsboard = React.lazy(() => import("../../pages/awardsboard/Awardsboard
 const Levels = React.lazy(() => import("../../pages/levels/Levels"));
 
 const loading = (
-  <div data-testid="loader" className="loader_container">
-    <div className="loader"></div>
-  </div>
+  <>
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <p>Loading... Please Wait</p>
+  </>
 );
 
 function Dashboard() {

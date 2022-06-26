@@ -7,7 +7,7 @@ import gcb from '../../assets/img/gcb.png'
 import roadsafety from '../../assets/img/roadsafety.jpg'
 import dvla from '../../assets/img/dvla.jpg'
 import goil from '../../assets/img/goil.png'
-import daily from '../../assets/img/daily.jpg'
+import daily from '../../assets/img/daily.png'
 
 
 
