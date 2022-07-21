@@ -1,0 +1,39 @@
+@media (min-width: 830px) {
+  .congrats_container {
+    width: 50%;
+    margin: auto !important;
+  }
+}
+
+.congrats_container {
+  height: 100vh;
+}
+
+.congrats {
+  padding: 10px 30px;
+}
+
+.congrats_img {
+  margin-top: 100px;
+}
+
+.congrats_text {
+  padding-top: 24px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.congrats_sub_text{
+    font-size: 13px;
+  }
+
+.congrats_button {
+  background-color: #1a237e !important;
+  border: none !important;
+  padding: 15px 0px !important;
+  border: 1.5px solid #1a237e !important;
+  margin-top: 40px;
+  width: 100%;
+  font-size: 13px !important;
+  border-radius: 7px !important;
+}

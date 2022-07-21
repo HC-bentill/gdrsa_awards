@@ -76,6 +76,11 @@ function Signin() {
             title: "Check Internet Connection !",
             icon: "warning",
           });
+        } else if (error?.response.data.error.id === "UserNotFound") {
+          swal({
+            text: "User is not Registered, Please Register",
+            icon: "warning",
+          });
         }
       });
   };
@@ -83,7 +88,11 @@ function Signin() {
   return (
     <>
       <div className="welcome_container">
-        <Header title={"Ghana Driver & Safety Awards"} countdown={false} />
+        <Header
+          title={"Ghana Driver & Safety Awards"}
+          countdown={false}
+          returnIcon={true}
+        />
 
         <Row className="welcome">
           <Col md={6} sm={12} className="text-center pt-4">

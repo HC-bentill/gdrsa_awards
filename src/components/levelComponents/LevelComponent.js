@@ -3,11 +3,19 @@ import { Card, ProgressBar } from "react-bootstrap";
 import "./levelcomponent.css";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import checkBoxIcon from "../../assets/icons/checkbox.png";
+import { useNavigate } from "react-router-dom";
+import { storeItem } from "../../api/jwt.service";
 
-function LevelCompoment({level, lesson}) {
+function LevelCompoment({level, lesson, levelRoute}) {
+  const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    navigate(`/lessons/${levelRoute}`);
+    }
+
   return (
     <>
-      <Card className="card_">
+      <Card className="card_" onClick={()=> {handleNavigation()}}>
         <div className="card_body">
           <div className="card_thumbnail">
             <AiOutlinePlayCircle className="play_icon" />

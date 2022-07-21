@@ -1,0 +1,60 @@
+@media (min-width: 830px) {
+  .failed_container {
+    width: 50%;
+    margin: auto !important;
+  }
+}
+
+.failed_container {
+  height: 100vh;
+}
+
+.failed {
+  padding: 10px 30px;
+}
+
+.failed_text {
+  padding-top: 24px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.failed_sub_text {
+  font-size: 13px;
+}
+
+.rewatch_button {
+  background-color: #1a227e00 !important;
+  border: none !important;
+  padding: 15px 0px !important;
+  border: 1px solid #1a237e !important;
+  width: 100%;
+  font-size: 13px !important;
+  border-radius: 7px !important;
+  color: #1a237e;
+}
+
+.rewatch_button:hover {
+  color: #1a237e;
+}
+
+.retake_button {
+  background-color: #1a237e !important;
+  border: none !important;
+  padding: 15px 0px !important;
+  border: 1.5px solid #1a237e !important;
+  width: 100%;
+  font-size: 13px !important;
+  border-radius: 7px !important;
+}
+
+.failed_points {
+  background: rgba(255, 0, 0, 0);
+  padding: 6px;
+  border-radius: 7px;
+  color: #1a237e;
+  border: 1px #1a237e solid;
+  width: 100px;
+  text-align: center;
+  margin: 30px 0px;
+}

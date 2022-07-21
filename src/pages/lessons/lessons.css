@@ -1,0 +1,52 @@
+.lesson_header {
+  background-color: #1a237e;
+  padding: 12px;
+}
+
+.lesson_header_container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-right: 40px;
+}
+
+.return_icon {
+  color: white;
+  font-size: 24px;
+}
+
+.lesson_top_text {
+  color: white;
+  font-size: 22px;
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 500;
+  margin-left: 14px;
+}
+
+.lesson_sub_text {
+  margin-top: 0px !important;
+  color: white;
+  font-size: 12px;
+  margin-left: 32px;
+}
+
+.lesson_timer {
+  color: white;
+  font-size: 13px;
+}
+
+.lesson_timer_icon {
+  font-size: 20px;
+}
+
+.lesson_body_container{
+    padding: 40px 15px;
+}
+
+ @media (min-width: 830px) {
+  .lessons_container {
+    width: 50%;
+    margin: auto !important;
+  }
+}

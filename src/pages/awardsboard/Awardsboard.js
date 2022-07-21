@@ -50,9 +50,9 @@ function Awardsboard() {
       buttons: ["No", "Yes"],
     }).then((willLogout) => {
       if (willLogout) {
+        navigate("/alt-signin");
         dispatch(setLogout());
         destroyItem("token");
-        window.location.replace("/");
         swal({
           title: "Logged Out!",
           text: "Success !",

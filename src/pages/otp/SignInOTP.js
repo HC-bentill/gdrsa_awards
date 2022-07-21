@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+import { Button, Col, Form, Modal, Row, Spinner } from "react-bootstrap";
 import OTPInput, { ResendOTP } from "otp-input-react";
 import congrats from "../../assets/img/congrats.png";
 import { FiYoutube } from "react-icons/fi";
@@ -149,15 +149,32 @@ function Otp() {
                   />
                   <ResendOTP
                     className="resend_btn mt-4"
-                    // maxTime={180}
+                    maxTime={0}
                     onResendClick={() => handleResendOtp()}
                   />
                 </div>
                 <Form.Group className="centerItems">
-                  <Button type="submit" className="submit_button">
+                {isSubmitting ? (
+                  <Button
+                    className="submit_button"
+                    type="submit"
+                    disabled
+                  >
+                    <Spinner
+                      as="span"
+                      animation="grow"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />{" "}
+                    Please Wait...
+                  </Button>
+                ) : (
+                  <Button className="submit_button" type="submit">
                     Submit
                   </Button>
-                </Form.Group>
+                )}
+              </Form.Group>
               </Form>
             </div>
           </Col>

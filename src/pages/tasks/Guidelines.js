@@ -4,12 +4,13 @@ import inviteIcon from "../../assets/icons/invite.png";
 import starIcon from "../../assets/icons/star.png";
 import whatsappIcon from "../../assets/icons/whatsapp.png";
 import checkBoxIcon from "../../assets/icons/checkbox.png";
-import "./tasks.css";
+import "./guidelines.css";
 import { useNavigate } from "react-router-dom";
 import { setLogin, setLogout } from "../../features/userSlice";
 import { useDispatch } from "react-redux";
 import { getItem } from "../../api/jwt.service";
 import swal from "sweetalert";
+import { BsChevronLeft } from "react-icons/bs";
 
 const tasksData = [
   "Complete online Test in 30days",
@@ -35,29 +36,28 @@ const featuresData = [
 function Tasks() {
   const dispatch = useDispatch();
 
-const handleVerifiedLogin = () => {
-  const token = getItem("token");
-  if (token){
-    dispatch(setLogin(true))
-    .then(navigate("/"))
-  }else{
-    dispatch(setLogout());
-    swal({
-      title: "Not Allowed",
-      text: "Please Sign in or Register",
-      icon: "error",
-    })
-    .then(
-      navigate("/")
-    );
-  }
-}
+  const handleVerifiedLogin = () => {
+    const token = getItem("token");
+    if (token) {
+      dispatch(setLogin(true)).then(navigate("/"));
+    } else {
+      dispatch(setLogout());
+      swal({
+        title: "Not Allowed",
+        text: "Please Sign in or Register",
+        icon: "error",
+      }).then(navigate("/"));
+    }
+  };
 
   const navigate = useNavigate();
   return (
     <>
       <div className="tasks_container">
-        <p className="tasks_title">Ghana Driver & Road Safety Awards 2022</p>
+        <div className="custom_flex" style={{justifyContent:"space-around"}}>
+          <BsChevronLeft  style={{fontSize:"30px"}} onClick={()=> navigate("/")}/>
+          <p className="tasks_title">Ghana Driver & Road Safety Awards 2022</p>
+        </div>
 
         <p className="what_next">What Next ?</p>
 

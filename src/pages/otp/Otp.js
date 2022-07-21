@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+import { Button, Col, Form, Modal, Row, Spinner } from "react-bootstrap";
 import OTPInput, { ResendOTP } from "otp-input-react";
 import congrats from "../../assets/img/congrats.png";
 import { FiYoutube } from "react-icons/fi";
@@ -26,8 +26,10 @@ function Otp() {
   } = useForm();
   const registrationFormData = useSelector(selectRegistrationForm);
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSubmit = (data) => {
+    setIsSubmitting(true);
     const dataToPost = {
       phone: registrationFormData?.phone,
       code: OTP,
@@ -49,6 +51,7 @@ function Otp() {
 
     verifyOTP(dataToPost)
       .then((response) => {
+        setIsSubmitting(false);
         if (response.data.ok) {
           registerUser(dataToRegister)
             .then((res) => {
@@ -74,6 +77,7 @@ function Otp() {
         console.log("verifyotp", response);
       })
       .catch((error) => {
+        setIsSubmitting(false);
         swal({
           title: "Sorry, An Error Occured !",
           text: error.response.data.error.message,
@@ -84,12 +88,14 @@ function Otp() {
   };
 
   const handleResendOtp = () => {
+    setIsSubmitting(true);
     const dataToResend = {
       phone: registrationFormData?.phone,
       resend: true,
     };
     resendOTP(dataToResend)
       .then((response) => {
+        setIsSubmitting(false);
         if (response.data.ok) {
           storeItem(response.data.data.token, "token");
           swal({
@@ -106,6 +112,7 @@ function Otp() {
         }
       })
       .catch((error) => {
+        setIsSubmitting(false);
         swal({
           title: "Sorry, An Error Occured !",
           text: error.response.data.error.message,
@@ -148,9 +155,22 @@ function Otp() {
                   />
                 </div>
                 <Form.Group className="centerItems">
-                  <Button type="submit" className="submit_button">
-                    Submit
-                  </Button>
+                  {isSubmitting ? (
+                    <Button className="submit_button" type="submit" disabled>
+                      <Spinner
+                        as="span"
+                        animation="grow"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />{" "}
+                      Please Wait...
+                    </Button>
+                  ) : (
+                    <Button className="submit_button" type="submit">
+                      Submit
+                    </Button>
+                  )}
                 </Form.Group>
               </Form>
             </div>

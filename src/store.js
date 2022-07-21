@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import userReducer from "./features/userSlice";
 import appReducer from "./features/appSlice";
+import quizReducer from "./features/quizSlice";
 import thunk from "redux-thunk";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -16,6 +17,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   app: appReducer,
+  quiz:quizReducer,
 });
 
 // Create a persistent reducer 1st arg: config for persist reducer. 2nd arg: combined reducers

@@ -3,16 +3,28 @@ import { Col, Container, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 import Countdown from "react-countdown";
 import { useNavigate } from "react-router-dom";
 import "./header.css";
+import { BsChevronLeft } from "react-icons/bs";
 
-function Header({ countdown, signin, title }) {
+function Header({ countdown, signin, title, returnIcon }) {
   const navigate = useNavigate();
   return (
     <>
       <Navbar className="navbar">
         <Container>
-          <Navbar.Brand  href="/">
-            {!title ? <p className="navbar_brand">gdrsa<br></br>FOUNDATION</p> : ""}
-            {title ? <p className="navbar_brand2">Ghana Driver & Safety Awards</p> : ""}
+          {returnIcon ? <BsChevronLeft style={{fontSize:"35px"}} onClick={()=> navigate("/")} /> : ""}
+          <Navbar.Brand href="/">
+            {!title ? (
+              <p className="navbar_brand">
+                gdrsa<br></br>FOUNDATION
+              </p>
+            ) : (
+              ""
+            )}
+            {title ? (
+              <p className="navbar_brand2">Ghana Driver & Road Safety Awards</p>
+            ) : (
+              ""
+            )}
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
