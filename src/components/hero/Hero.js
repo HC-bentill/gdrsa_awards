@@ -26,9 +26,6 @@ function Hero() {
             <h1 className='hero__text'>
                 Ghana Driver & Road <br></br> Safety Awards 2022
             </h1>
-            <p className='hero__text_p'>The countdown is on for
-             the biggest event for Professional Drivers in Ghana</p>
-
              <div className='button_container'>
                 <Button className='watch_video_button' onClick={()=>handleScroll()}>WATCH FULL VIDEO  <span><FiYoutube/></span></Button>
                 <Button className='register_button' onClick={() => navigate('/register') }>Register</Button>

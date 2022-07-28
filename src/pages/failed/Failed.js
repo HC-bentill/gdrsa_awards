@@ -15,14 +15,13 @@ function Failed() {
 
   const handleConfirmation = () => {
     swal({
-      text: "Are you sure you want to Re-Take Quiz ?",
-      icon: "warning",
+      text: "Are you sure you want to Re-take Quiz ?",
       buttons: true,
       buttons: ["No", "Yes"],
     }).then((confirmed) => {
       if (confirmed) {
-        navigate(`/quiz/${quizResultData?.levelId}`);
-        storeQuizTime();
+        navigate(`/lessons/${quizResultData?.levelId}`);
+        // storeQuizTime();
       }
     });
   };
@@ -41,7 +40,7 @@ function Failed() {
     );
   };
 
-  console.log("quizResultData?.points =",quizResultData?.points)
+  console.log("quizResultData?.points =", quizResultData?.points);
   return (
     <>
       <div className="failed_container">

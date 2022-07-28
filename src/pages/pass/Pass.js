@@ -49,6 +49,7 @@ function Pass() {
   
 
   const handleNavigation = () => {
+    navigate('/levels')
     if (completedLevel === "Level 1") {
       navigate(`/lessons/${levels?.filter((x) => x.title === "Level 2")[0]?.id}`);
       setPassText('Round 1, level 1 Complete. Click Next for level 2')

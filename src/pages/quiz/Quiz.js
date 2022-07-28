@@ -2,20 +2,19 @@ import React, { useEffect, useState } from "react";
 import "./quiz.css";
 import { BsChevronLeft } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import QuizChoice from "../../components/quizChoice/QuizChoice";
 import { getQuiz, postQuiz } from "../../api/level.service";
 import { useDispatch, useSelector } from "react-redux";
 import Timer from "../../components/Timer/Timer";
 import moment from "moment";
 import {
+  handleQuizChoiceSelection,
   selectQuizData,
+  selectQuizQuestions,
   selectSubmitQuiz,
-  setQuizData,
   setQuizDataNull,
-  setQuizNull,
   setQuizResult,
-  setQuizResultNull,
   setSubmitQuiz,
 } from "../../features/quizSlice";
 import swal from "sweetalert";
@@ -24,23 +23,26 @@ import Countdown from "react-countdown";
 function Quiz() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [questions, setQuestions] = useState([]);
+  const storedQuestions = useSelector(selectQuizQuestions);
+  const questions = storedQuestions.quizQuestions;
   const [questionIndex, setQuestionIndex] = useState(0);
   const dispatch = useDispatch();
   const quizData = useSelector(selectQuizData);
   const questionsAndAnswers = useSelector(selectSubmitQuiz);
   const time = quizData.quizEndTime;
-  const [quizId, setQuizId] = useState("");
-
-
+  const quizId = storedQuestions.quizId;
+  const [loading, setLoading] = useState(false);
+  
   const handleMarking = () => {
+    setLoading(true);
     const quizSubmission = {
-      trainingId: "string",
+      trainingId: "Lorem",
       quizId: quizId,
       submission: questionsAndAnswers,
     };
     postQuiz(quizSubmission)
       .then((response) => {
+        setLoading(false);
         if (response.data.ok) {
           dispatch(
             setQuizResult({
@@ -49,10 +51,12 @@ function Quiz() {
               numberOfQuestions: questions.length,
             })
           );
-          if(response.data.data.details.status === "PASSED"){
+          if (response.data.data.details.status === "PASSED") {
             navigate("/pass");
-          }else{
-            navigate("/failed"); 
+            dispatch(setQuizDataNull());
+          } else {
+            navigate("/failed");
+            dispatch(setQuizDataNull());
           }
         } else {
           swal({
@@ -62,19 +66,33 @@ function Quiz() {
         }
       })
       .catch((error) => {
-        swal({
-          text: error.response.data.error.message,
-          icon: "error",
-        })
-        .then(()=>{navigate('/levels')})
+        setLoading(false);
+        if (
+          error.response.data.error.message ===
+          "You do not have an active quiz to submit to."
+        ) {
+          swal({
+            text: "Quiz has already been submitted",
+            icon: "error",
+          }).then(() => {
+            navigate("/levels");
+          });
+        } else {
+          swal({
+            text: error?.data.error.message,
+            icon: "error",
+          }).then(() => {
+            navigate("/levels");
+          });
+        }
       });
   };
 
   const alphabets = {
-    1: "A",
-    2: "B",
-    3: "C",
-    4: "D",
+    1: "A.",
+    2: "B.",
+    3: "C.",
+    4: "D.",
   };
 
   const handleChoice = (questionId, choiceid) => {
@@ -86,24 +104,9 @@ function Quiz() {
     );
   };
 
-  useEffect(() => {
-    getQuiz(id)
-      .then((res) => {
-        setQuizId(res?.data.data.lesson.quiz.id)
-        const quest = res?.data.data.lesson.quiz.questions;
-        setQuestions([...quest]);
-      })
-      .catch((err) => {
-        console.log("quizError =", err);
-        // swal({
-        //   // title: "Sorry, An Error Occured !",
-        //   text: err.response.data.error.message,
-        //   icon: "warning",
-        // });
-      });
-      dispatch(setQuizDataNull());
-      console.log('i fire once')
-  }, [questions, id]);
+  // useEffect(() => {
+
+  // }, []);
 
   console.log("questions =", questions);
 
@@ -190,21 +193,32 @@ function Quiz() {
 
             <div className="quiz_choice_container">
               {questions[questionIndex]?.choices?.map((item, idx) => (
-                <div
-                  onClick={() =>
-                    handleChoice(questions[questionIndex]?.id, item.id)
-                  }
-                  className="quiz_choice"
-                >
-                  <p className="quiz_choice_label">{alphabets[idx + 1]}</p>
-                  <div className="quiz_choice_text_container">
-                    <span className="quiz_choice_text">{item?.text}</span>
-                  </div>
-                </div>
+                <>
+                  <form>
+                    <label className="labl">
+                      <input
+                        type="radio"
+                        name="radioname"
+                        value={item?.text}
+                        checked={questionsAndAnswers[questions[questionIndex]?.id] ===  item.id}
+                      />
+                      <div
+                        className="choice_label"
+                        onClick={() =>
+                          handleChoice(questions[questionIndex]?.id, item.id)
+                        }
+                        for=""
+                      >
+                        <strong>{alphabets[idx + 1]}</strong>
+                        <span className="quiz_choice_text">{item?.text}</span>
+                      </div>
+                    </label>
+                  </form>
+                </>
               ))}
             </div>
 
-            <div className="custom_flex">
+            <div className="custom_flex mt-5">
               <Button
                 className="control_button"
                 onClick={() => handlePrev()}
@@ -212,17 +226,23 @@ function Quiz() {
               >
                 Previous
               </Button>
-              <Button className="control_button" onClick={() => handleNext()}>
-                {questionIndex + 1 === questions.length ? "Submit" : "Next"}
-              </Button>
+              {loading ? (
+                <Button className="control_button" disabled>
+                  <Spinner
+                    as="span"
+                    animation="grow"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />{" "}
+                  Please Wait...
+                </Button>
+              ) : (
+                <Button className="control_button" onClick={() => handleNext()}>
+                  {questionIndex + 1 === questions.length ? "Submit" : "Next"}
+                </Button>
+              )}
             </div>
-            {/* <Button
-            className="quiz_button"
-            onClick={() => navigate("/congrats")}
-            type="submit"
-          >
-            Next
-          </Button> */}
           </div>
         )}
       </div>

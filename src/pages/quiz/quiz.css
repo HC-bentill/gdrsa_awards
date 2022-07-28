@@ -79,7 +79,40 @@
 }
 
 .quiz_choice_container {
-  padding: 35px 0px;
+  padding: 20px 0px;
+}
+
+.labl {
+  display : flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.labl > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+.labl > input + div{ /* DIV STYLES */
+  cursor:pointer;
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 7px !important;
+  background-color: white;
+  margin-top: 20px;
+}
+.labl > input:checked + div{ /* (RADIO CHECKED) DIV STYLES */
+  background-color: #188235;
+  color: white;
+}
+
+.choice_label{
+  display: flex;
+  align-items: center;
+}
+
+.quiz_choice_text{
+  font-size: 15px !important;
+  margin-left: 10%;
 }
 
 .quiz_question {

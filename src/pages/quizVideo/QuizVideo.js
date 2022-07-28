@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsChevronLeft } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
 import "./quizvideo.css";
 import { Button } from "react-bootstrap";
 import swal from "sweetalert";
-import { setQuizData } from "../../features/quizSlice";
+import { setQuizData, setQuizQuestions } from "../../features/quizSlice";
 import moment from "moment";
 import { useDispatch } from "react-redux";
+import { getQuiz } from "../../api/level.service";
 
 function QuizVideo() {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    getQuiz(id)
+      .then((res) => {
+        dispatch(
+          setQuizQuestions({
+            quizId: res?.data.data.lesson.quiz.id,
+            quizQuestions: res?.data.data.lesson.quiz.questions,
+          })
+        );
+      })
+      .catch((err) => {
+        console.log("quizError =", err);
+      });
+  }, [id]);
 
   const handleConfirmation = () => {
     swal({

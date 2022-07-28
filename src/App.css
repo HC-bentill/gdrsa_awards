@@ -27,6 +27,14 @@
   100% { transform: rotate(360deg); }
 }
 
+.swal-button--confirm {
+  background: #1a237e;
+}
+
+.swal-button--danger {
+  background: rgb(206, 0, 0);
+}
+
 
 @media (max-width: 830px){
   .loader {
