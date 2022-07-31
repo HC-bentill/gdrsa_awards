@@ -31,6 +31,12 @@
   margin-bottom: 20%;
 }
 
+.lesson_carousel{
+  width: 100% !important;
+  z-index: 0.5;
+}
+
+
 .lesson_carousel > .carousel-indicators {
   display: none;
 }
@@ -49,18 +55,20 @@
 
 .lesson_carousel > .carousel-control-prev {
   left: 10px;
-  top: 100px;
+  top: 150px;
   height: 40px;
   width: 40px;
   border-radius: 100%;
   background-color: #1a237e;
+  z-index: 1;
 }
 
 .lesson_carousel > .carousel-control-next {
   right: 10px;
-  top: 100px;
+  top: 150px;
   height: 40px;
   width: 40px;
   border-radius: 100%;
   background-color: #1a237e;
+  z-index: 1;
 }

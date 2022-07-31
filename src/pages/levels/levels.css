@@ -27,10 +27,28 @@
 }
 
 .levels_intro_video{
-    width: 100%;
+    width: 100% !important;
     border-radius: 0px;
     padding: 0px !important;
     background-color: white;
+}
+
+.levels_intro_video > .carousel-control-prev {
+  left: 10px;
+  top: 100px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  background-color: #1a237e;
+}
+
+.levels_intro_video > .carousel-control-next {
+  right: 10px;
+  top: 100px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  background-color: #1a237e;
 }
 
 .level_components{

@@ -149,7 +149,7 @@ function Otp() {
                   />
                   <ResendOTP
                     className="resend_btn mt-4"
-                    maxTime={0}
+                    maxTime={10}
                     onResendClick={() => handleResendOtp()}
                   />
                 </div>

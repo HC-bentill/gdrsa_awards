@@ -13,19 +13,6 @@ function Failed() {
   const quizResultData = useSelector(selectQuizResult);
   const dispatch = useDispatch();
 
-  const handleConfirmation = () => {
-    swal({
-      text: "Are you sure you want to Re-take Quiz ?",
-      buttons: true,
-      buttons: ["No", "Yes"],
-    }).then((confirmed) => {
-      if (confirmed) {
-        navigate(`/lessons/${quizResultData?.levelId}`);
-        // storeQuizTime();
-      }
-    });
-  };
-
   const time = new Date();
   time.setSeconds(time.getSeconds() + 900); //15 minutes after present time
 
@@ -61,14 +48,14 @@ function Failed() {
             </p>
             <Button
               className="rewatch_button"
-              onClick={() => navigate(`/quiz-video/${quizResultData?.levelId}`)}
+              onClick={() =>  navigate(`/lessons/${quizResultData?.levelId}`)}
               type="submit"
             >
-              Re-watch Video
+              Re-watch Videos
             </Button>
             <Button
               className="retake_button mt-3"
-              onClick={() => handleConfirmation()}
+              onClick={() => navigate(`/quiz-video/${quizResultData?.levelId}`)}
               type="submit"
             >
               Re-take Quiz

@@ -96,7 +96,7 @@
 .avatar_toggle {
   padding: 0px !important;
   background-color: rgba(255, 0, 0, 0) !important;
-  border: none;
+  border: none !important;
 }
 
 .avatar_toggle:focus {

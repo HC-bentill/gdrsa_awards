@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Timer from "../../components/Timer/Timer";
 import moment from "moment";
 import {
-  handleQuizChoiceSelection,
   selectQuizData,
   selectQuizQuestions,
   selectSubmitQuiz,
@@ -19,6 +18,7 @@ import {
 } from "../../features/quizSlice";
 import swal from "sweetalert";
 import Countdown from "react-countdown";
+import { destroyItem } from "../../api/jwt.service";
 
 function Quiz() {
   const navigate = useNavigate();

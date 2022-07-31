@@ -4,17 +4,26 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./quizvideo.css";
 import { Button } from "react-bootstrap";
 import swal from "sweetalert";
-import { setQuizData, setQuizQuestions } from "../../features/quizSlice";
+import {
+  selectQuizData,
+  selectQuizSession,
+  setQuizData,
+  setQuizQuestions,
+  setQuizSession,
+} from "../../features/quizSlice";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getQuiz } from "../../api/level.service";
+import { getItem, storeItem } from "../../api/jwt.service";
 
 function QuizVideo() {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
+  const storedQuizTime = useSelector(selectQuizData);
+  const quizSession = useSelector(selectQuizSession);
 
-  useEffect(() => {
+  const handleQuizRequest = () => {
     getQuiz(id)
       .then((res) => {
         dispatch(
@@ -24,10 +33,25 @@ function QuizVideo() {
           })
         );
       })
-      .catch((err) => {
-        console.log("quizError =", err);
+      .catch((error) => {
+        console.log("quizerroror =", error);
+        if (
+          error.response.data.error.message ===
+          "There is an already active quiz for this user."
+        ) {
+          swal({
+            text: 'Quiz is already in progress. Click "OK" to continue',
+          });
+        } else {
+          swal({
+            text: error?.data.error.message,
+            icon: "error",
+          }).then(() => {
+            navigate("/levels");
+          });
+        }
       });
-  }, [id]);
+  };
 
   const handleConfirmation = () => {
     swal({
@@ -37,9 +61,24 @@ function QuizVideo() {
     }).then((confirmed) => {
       if (confirmed) {
         navigate(`/quiz/${id}`);
-        storeQuizTime();
+        handleQuizRequest();
+        if (quizSession) {
+          getStoredTime();
+        } else {
+          storeQuizTime();
+          dispatch(setQuizSession(true));
+        }
       }
     });
+  };
+
+  const getStoredTime = () => {
+    dispatch(
+      setQuizData({
+        quizStartTime: storedQuizTime.quizStartTime,
+        quizEndTime: storedQuizTime.quizEndTime,
+      })
+    );
   };
 
   const time = new Date();

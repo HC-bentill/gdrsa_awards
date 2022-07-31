@@ -7,9 +7,8 @@ import { AiFillClockCircle } from "react-icons/ai";
 import swal from "sweetalert";
 import { getLesson, getLessons } from "../../api/lessons.service";
 import { storeItem } from "../../api/jwt.service";
-const LessonComponent = React.lazy(() =>
-  import("../../components/lessonComponents/LessonComponent")
-);
+import LessonComponent from "../../components/lessonComponents/LessonComponent";
+
 
 function Lessons() {
   const navigate = useNavigate();

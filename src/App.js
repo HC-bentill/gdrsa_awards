@@ -4,26 +4,17 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "./features/userSlice";
 import { BASE_URL } from "./constants/baseURL";
-
-const LoginRoutes = React.lazy(() => import("./routes/LoginRoutes"));
-const AppRoutes = React.lazy(() => import("./routes/AppRoutes"));
-
-const loading = (
-  <div data-testid="loader" className="centerItems loader_container">
-    <>
-      <div className="loader"></div>
-      <p className="pt-3">Loading... Please Wait</p>
-    </>
-  </div> 
-);
+import LoginRoutes from "./routes/LoginRoutes";
+import AppRoutes from "./routes/AppRoutes";
+import NoInternetConnection from "./NoInternetConnection";
 
 function App() {
   const user = useSelector(selectUser);
   return (
     <div className="App">
-      <React.Suspense fallback={loading}>
+      <NoInternetConnection>
         <Router>{user ? <LoginRoutes /> : <AppRoutes />}</Router>
-      </React.Suspense>
+      </NoInternetConnection>
     </div>
   );
 }
