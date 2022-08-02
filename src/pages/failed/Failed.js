@@ -38,7 +38,9 @@ function Failed() {
                 {quizResultData?.points} pts <span>⭐</span>
               </div>
             </div>
-            <FailedIcon />
+            <div className="centerItems">
+              <FailedIcon />
+            </div>
           </Col>
           <Col className="text-center" md={12} sm={12}>
             <p className="failed_text">Sorry !</p>
@@ -48,7 +50,7 @@ function Failed() {
             </p>
             <Button
               className="rewatch_button"
-              onClick={() =>  navigate(`/lessons/${quizResultData?.levelId}`)}
+              onClick={() => navigate(`/lessons/${quizResultData?.levelId}`)}
               type="submit"
             >
               Re-watch Videos

@@ -5,6 +5,11 @@
 }
 
 .no_connection_img{
-    padding-top: 150px;
+    padding-top: 200px;
     width: 100%;
+}
+
+.wifiOff{
+    font-size: 100px;
+    color: gray;
 }

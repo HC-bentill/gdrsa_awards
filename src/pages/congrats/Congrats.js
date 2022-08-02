@@ -11,8 +11,10 @@ function Congrats() {
     <>
       <div className="congrats_container">
         <Row className="congrats">
-          <Col md={12} sm={12} className="congrats_img">
-            <CongratsIcon />
+          <Col md={12} sm={12} >
+            <div className="centerItems">
+            <CongratsIcon className="congrats_img" />
+            </div>
             <ReactConfetti width={window.innerWidth} height={350} />
           </Col>
           <Col className="text-center" md={12} sm={12}>
