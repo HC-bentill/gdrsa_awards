@@ -1,0 +1,56 @@
+.letter_container {
+  width: 50%;
+  margin: auto !important;
+}
+
+.letter_container > h1 {
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 22px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.letter_container > p {
+  font-size: 15px;
+  margin-bottom: 50px;
+}
+
+.letter_container > img {
+  margin-bottom: 20px;
+  width: 220px;
+  height: 220px;
+}
+
+.ceo_img{
+  margin-bottom: 20px;
+  width: 220px;
+  height: 220px;
+  border-radius: 100%;
+}
+
+@media (max-width: 830px) {
+  .letter_container {
+    width: 100%;
+    padding: 20px 15px;
+  }
+
+  .letter_container > h1 {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 22px;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .letter_container > p {
+    font-size: 12px;
+  }
+
+  .ceo_img{
+    margin-bottom: 20px;
+    width: 220px;
+    height: 220px;
+    border-radius: 100%;
+  }
+}

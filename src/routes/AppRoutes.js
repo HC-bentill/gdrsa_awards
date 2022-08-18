@@ -7,6 +7,8 @@ import Otp from "../pages/otp/Otp";
 import SignInOTP from "../pages/otp/SignInOTP";
 import Signin from "../pages/signin/Signin";
 import Tasks from "../pages/tasks/Tasks";
+import About from "../pages/aboutUs/About";
+import Letter from "../pages/letter/Letter";
 
 
 
@@ -20,6 +22,8 @@ function AppRoutes() {
         <Route path="register" element={<Register />} />
         <Route path="otp" element={<Otp />} />
         <Route path="tasks" element={<Tasks />} />
+        <Route path="about-us" element={<About />} />
+        <Route path="letter" element={<Letter />} />
       </Routes>
     </>
   );

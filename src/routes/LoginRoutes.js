@@ -13,10 +13,10 @@ import Failed from "../pages/failed/Failed";
 import Pass from "../pages/pass/Pass";
 import { useSelector } from "react-redux";
 import { selectQuizSession } from "../features/quizSlice";
+import PhoneInterview from "../pages/phoneInterview/PhoneInterview";
 
 function LoginRoutes() {
   const quizSession = useSelector(selectQuizSession);
-  console.log("quizSession =", quizSession);
 
   return (
     <>
@@ -35,6 +35,7 @@ function LoginRoutes() {
         <Route path="/congrats" element={<Congrats />} />
         <Route path="/failed" element={<Failed />} />
         <Route path="/pass" element={<Pass />} />
+        <Route path="/phone-interview" element={<PhoneInterview />} />
       </Routes>
     </>
   );

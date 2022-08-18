@@ -24,6 +24,11 @@
   .partnersLogo {
     width: 35%;
     object-fit: contain;
+    filter: grayscale(100%);
+  }
+
+  .partnersLogo:hover{
+    filter: grayscale(0%);
   }
 
   .desktop_partners_ {

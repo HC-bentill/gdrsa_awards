@@ -1,8 +1,9 @@
 import React from 'react'
 import { Button, Col, Container, Row, Carousel } from 'react-bootstrap'
 import './videosection.css'
-import Vid1 from '../../assets/videos/vid1.MP4'
-import Vid2 from '../../assets/videos/vid2.MP4'
+import Vid1 from '../../assets/videos/introvideoeng.mp4'
+import Vid2 from '../../assets/videos/introvideotwi.mp4'
+import Vid3 from '../../assets/videos/vid1.MP4'
 import ReactPlayer from 'react-player'
 import { useNavigate } from 'react-router-dom';
 
@@ -18,7 +19,12 @@ function VideoSection() {
             id: 2,
             title: "Twi Version",
             src: Vid2,
-        }
+        },
+        {
+            id: 3,
+            title: "2nd Edition GDRSA",
+            src: Vid3,
+        },
     ]
   return (
       <>
@@ -37,7 +43,7 @@ function VideoSection() {
                         </Col>
 
                         <Col className='centerItems'>
-                            <Carousel interval={null}>
+                            <Carousel className='intro_carousel' interval={null}>
                                 {videoProperties.map((video) => (
                                     <Carousel.Item key={video.id}>
                                         <ReactPlayer
@@ -74,7 +80,7 @@ function VideoSection() {
 
                 <p className='text-center mt-5'>Watch Intro Video</p>
                 <div className='centerItems'>
-                    <Carousel interval={null}>
+                    <Carousel className='intro_carousel' interval={null}>
                         {videoProperties.map((video) => (
                             <Carousel.Item key={video.id}>
                                 <ReactPlayer

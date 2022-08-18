@@ -39,6 +39,7 @@ function Awardsboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  
 
   const handleLogout = () => {
     swal({
@@ -74,6 +75,7 @@ function Awardsboard() {
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
   };
 
+
   const quizImages = [
     {
       locked: false,
@@ -81,14 +83,19 @@ function Awardsboard() {
       navigate: "/levels",
     },
     {
-      locked: true,
+      locked: !user.stage?.filter(x => x === "QUIZ")[0] === "QUIZ",
       src: phone,
-      navigate: "/",
+      navigate: user.stage?.filter(x => x === "QUIZ")[0] === "QUIZ" ? "/phone-interview" : "/",
     },
+    // {
+    //   locked: false,
+    //   src: phone,
+    //   navigate: "/phone-interview", 
+    // },
     {
       locked: true,
       src: inperson,
-      navigate: "/",
+      navigate: "/", 
     },
   ];
 
@@ -97,7 +104,6 @@ function Awardsboard() {
     whoAmI()
       .then((response) => {
         if (response?.data.ok) {
-          console.log("user details =", response?.data.data);
           dispatch(
             setLogin({
               ...response?.data.data,
@@ -120,111 +126,123 @@ function Awardsboard() {
 
   return (
     <>
-      <Row className="awardsboard_container">
-        <Col lg={12} md={12} sm={12} xs={12}>
-          <p className="top_texts mt-4">
-            Ghana Driver & Road Safety Awards 2022
-          </p>
-          <div>
-            <p style={{ fontSize: "16px" }} className="top_texts">
-              Awardsboard
+      {!user ? (
+        <div data-testid="loader" className="centerItems loader_container">
+          <>
+            <div className="loader"></div>
+            <p className="pt-3">Loading... Please Wait</p>
+          </>
+        </div>
+      ) : (
+        <Row className="awardsboard_container">
+          <Col lg={12} md={12} sm={12} xs={12}>
+            <p className="top_texts mt-4">
+              Ghana Driver & Road Safety Awards 2022
             </p>
+            <div>
+              <p style={{ fontSize: "16px" }} className="top_texts">
+                Awardsboard
+              </p>
 
-            <div className="awardsboard_header">
-              <div>
-                <div className="custom_flex">
-                  <Dropdown>
-                    <Dropdown.Toggle
-                      variant="secondary"
-                      className="avatar_toggle"
-                      id="dropdown-basic"
-                    >
-                      <AiOutlineUser
-                        id="dropdown-split-basic"
-                        className="avatar"
-                      />
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu className="avatar_menu">
-                      <Dropdown.Item onClick={() => navigate("/guidelines")}>
-                        Watch Guide Video
-                      </Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleLogout()}>
-                        Logout
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-
-                  <h5 className="">{user?.firstName}</h5>
-                </div>
-                <p className="mt-3">
-                  <span className="category_txt">{user?.category}</span> :{" "}
-                  {user?.organisationName}
-                </p>
-              </div>
-              <div className="avatar_container">
+              <div className="awardsboard_header">
                 <div>
-                  <div className="points">
-                    5 pts <span>⭐</span>
+                  <div className="custom_flex">
+                    <Dropdown>
+                      <Dropdown.Toggle
+                        variant="secondary"
+                        className="avatar_toggle"
+                        id="dropdown-basic"
+                      >
+                        <AiOutlineUser
+                          id="dropdown-split-basic"
+                          className="avatar"
+                        />
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu className="avatar_menu">
+                        <Dropdown.Item onClick={() => navigate("/guidelines")}>
+                          Watch Guide Video
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleLogout()}>
+                          Logout
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+
+                    <h5 className="">{user.firstName}</h5>
+                  </div>
+                  <p className="mt-3">
+                    <span className="category_txt">{user.category}</span> :{" "}
+                    {user.organisationName}
+                  </p>
+                </div>
+                <div className="avatar_container">
+                  <div>
+                    <div className="points">
+                      5 pts <span>⭐</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </Col>
-        <Col lg={12} md={12} sm={12} xs={12}>
-          <div className="steps">
-            <Stepper activeStep={1} alternativeLabel>
-              {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel className="step_label">{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-          </div>
-          <div className="quiz_images_container">
-            {quizImages.map((img, idx) => {
-              const style = img.locked
-                ? { filter: "grayscale(100%)" }
-                : { filter: "grayscale(0%)" };
-              return (
-                <div className="centerItems">
-                  <img
-                    onClick={() => navigate(img.navigate)}
-                    key={idx}
-                    style={style}
-                    className="quiz_images"
-                    src={img.src}
-                    alt="img"
-                  />
-                  {img.locked ? <MdOutlineLock className="lock_icon" /> : ""}
+          </Col>
+          <Col lg={12} md={12} sm={12} xs={12}>
+            <div className="steps">
+              <Stepper activeStep={1} alternativeLabel>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel className="step_label">{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+            </div>
+            <div className="quiz_images_container">
+              {quizImages.map((img, idx) => {
+                const style = img.locked
+                  ? { filter: "grayscale(100%)" }
+                  : { filter: "grayscale(0%)" };
+                return (
+                  <div className="centerItems">
+                    <img
+                      onClick={() => navigate(img.navigate)}
+                      key={idx}
+                      style={style}
+                      className="quiz_images"
+                      src={img.src}
+                      alt="img"
+                    />
+                    {img.locked ? <MdOutlineLock className="lock_icon" /> : ""}
+                  </div>
+                );
+              })}
+            </div>
+            <Row>
+              <Col xs={7}>
+                <Button
+                  onClick={handleShow}
+                  className="dashboard_submit_button"
+                >
+                  <span>
+                    <AiOutlineUserAdd />
+                  </span>{" "}
+                  Invite Friend
+                </Button>
+              </Col>
+              <Col xs={5}>
+                <div>
+                  <a href="https://api.whatsapp.com/send?phone=447939539989">
+                    <img
+                      src={whatsapp}
+                      className="whatsappbtn"
+                      alt="whatsappbtn"
+                    />
+                  </a>
                 </div>
-              );
-            })}
-          </div>
-          <Row>
-            <Col xs={7}>
-              <Button onClick={handleShow} className="dashboard_submit_button">
-                <span>
-                  <AiOutlineUserAdd />
-                </span>{" "}
-                Invite Friend
-              </Button>
-            </Col>
-            <Col xs={5}>
-              <div>
-                <a href="https://api.whatsapp.com/send?phone=447939539989">
-                  <img
-                    src={whatsapp}
-                    className="whatsappbtn"
-                    alt="whatsappbtn"
-                  />
-                </a>
-              </div>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      )}
 
       {/*  modal*/}
       <Modal show={show} onHide={handleClose}>

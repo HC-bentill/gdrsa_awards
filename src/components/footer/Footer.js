@@ -2,7 +2,10 @@ import React from 'react'
 import './footer.css'
 import { Col, Container, Row } from 'react-bootstrap'
 import { FaFacebookSquare, FaTwitterSquare, FaLinkedin, FaTiktok} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 function Footer() {
+    const navigate = useNavigate();
   return (
     <div className='footer'>
         <Container className='web_footer'>
@@ -24,7 +27,7 @@ function Footer() {
             <Row>
                 <Col>
                     <ul className='footer_list'>
-                        <li>About Us</li>
+                        <li onClick={() => navigate('/about-us')}>About Us</li>
                         <li>Contact Us</li>
                         <li>Community</li>
                         <li>Partners</li>

@@ -1,0 +1,32 @@
+.phone_video_iframe {
+    height: 300px;
+    margin: auto;
+  }
+
+  .phone_container{
+    padding: 40px 24px;
+    background-color: #070a29;
+    height: 100vh;
+  }
+
+  .phone_title{
+    color: white;
+  }
+
+  .phone_header{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .phone_header > p {
+    margin-left: 10px;
+    margin: 0px !important;
+  }
+
+@media (min-width: 830px) {
+  .phone_container {
+    width: 50%;
+    margin: auto !important;
+  }
+}
